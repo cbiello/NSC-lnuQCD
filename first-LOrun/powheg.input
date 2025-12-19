@@ -1,0 +1,178 @@
+chooseDY -1
+bornonly 1
+qmin 200
+
+#------------------------------------------------
+#   INCOMING BEAMS PARAMETER
+#------------------------------------------------
+ih1         1      ! hadron 1 (1 for protons, -1 for antiprotons)
+ih2         1      ! hadron 2 (1 for protons, -1 for antiprotons)
+ebeam1 7000d0      ! energy of beam 1
+ebeam2 7000d0      ! energy of beam 2
+
+
+#------------------------------------------------
+#   PDF & ALPHAS SETTINGS
+#------------------------------------------------
+#   To be set only if using LHA pdfs
+lhans1             325100       ! pdf set for hadron 1 (LHA numbering)
+lhans2             325100       ! pdf set for hadron 2 (LHA numbering)
+#   ALPHAS AND PDF EVOLUTION
+alphas_from_lhapdf  1            ! (default 0) if 1, uses alphas from PDF evolution tool (e.g. lhapdf or hoppet)
+
+#------------------------------------------------
+#    EW INPUTS
+#------------------------------------------------
+ewscheme	    1
+zmass 91.1876d0
+wmass 80.3980d0
+hmass 125d0
+tmass 173.2d0
+bmass 0d0
+zwidth 2.4952d0
+wwidth 2.1054d0
+hwidth 4.1650d-3
+gfermi 1.16639d-5
+
+
+#------------------------------------------------
+#   RENORMALIZATION/FACTORIZATION SCALE SETTINGS
+#------------------------------------------------
+# IMPLEMENT SCALES
+fixedscale 1	   ! 1 = fixed -> muren = mufac = mZ
+#dynamicalscale 2   ! 1 = XXX, 2 = XXX
+#runningscales 0    ! 0 = fixed scale (leave this to 0 when MiNLO is used.
+#                  ! All scale settings is taken care of internally)
+
+#------------------------------------------------
+#   PROCESS PARAMETERS
+#------------------------------------------------
+
+
+#------------------------------------------------
+#   Generation cuts
+#------------------------------------------------
+bornktmin        0.26d0    ! Generation cut; minimum kt in underlying born
+
+
+#------------------------------------------------
+#   Analysis cuts
+#------------------------------------------------
+
+
+#------------------------------------------------
+#   Jet definition
+#------------------------------------------------
+
+
+#---------------------------------------------------
+#   POWHEG PARAMETERS: Monte Carlo Integration 
+#---------------------------------------------------
+#   Parameters to allow or not the use of stored data
+use-old-grid        0     ! if 1 use old grid if file pwggrids.dat is present (<> 1 regenerate)
+#   General MC Integration settings
+ncall1           200000     ! number of calls for initializing the integration grid
+itmx1               3     ! number of iterations for initializing the integration grid
+ncall2           200000     ! number of calls for computing the integral and finding upper bound
+itmx2               1     ! number of iterations for computing the integral and finding upper bound
+foldcsi             1     ! number of folds on csi integration
+foldy               1     ! number of folds on  y  integration
+foldphi             1     ! number of folds on phi integration
+testplots           1     ! (default 0, do not) do NLO and PWHG distributions
+
+
+#-----------------------------------------------------
+#   POWHEG PARAMETERS: Upper bound  evaluation
+#-----------------------------------------------------
+use-old-ubound      0    ! if 1 use norm of upper bounding function stored in pwgubound.dat, if present; <> 1 regenerate
+nubound             0    ! number of bbarra calls to setup norm of upper bounding function
+storemintupb        1    ! Improve upper bounding computation
+xupbound          2d0    ! increase upper bound for radiation generation		    
+mintupbratlim     1d3
+#compress_upb        1
+ubexcess_correct    1
+
+
+#---------------------------------------------------
+#   POWHEG PARAMETERS: Event generation
+#---------------------------------------------------
+numevts             0    ! number of events to be generated
+#compress_lhe       1
+#   To correct for UB violations detected during stage 4
+#btildeviol         1
+!corr_btilde      XXX
+!corr_remnant     XXX
+
+
+#------------------------------------------------
+#   PARTON SHOWER PARAMETERS
+#------------------------------------------------
+#   Settings for shower with pythia8
+py8tune       21   ! (default 14) tune for pythia8 (14 -> Monash2013 tune)
+nohad          1   ! (default 1) if 1 switch off hadronization
+#changescalup  0   ! (default 0, use scalupveto routines) if 1 use pythia8 internal routines
+
+
+#------------------------------------------------
+#   SCALE VARIATION & REWEIGHTING
+#------------------------------------------------
+renscfact      1d0          ! (default 1d0) ren scale factor: muren  = muref * renscfact
+facscfact      1d0   	    ! (default 1d0) fac scale factor: mufact = muref * facscfact
+storeinfo_rwgt 1   	    ! store info to allow for reweighting
+
+rwl_file '-'
+<initrwgt>
+<weightgroup name='First-Weights'>
+<weight id='11'> renscfact=1.0 facscfact=1.0 </weight>
+<weight id='12'> renscfact=1.0 facscfact=2.0 </weight>
+<weight id='21'> renscfact=2.0 facscfact=1.0 </weight>
+<weight id='22'> renscfact=2.0 facscfact=2.0 </weight>
+<weight id='1H'> renscfact=1.0 facscfact=0.5 </weight>
+<weight id='H1'> renscfact=0.5 facscfact=1.0 </weight>
+<weight id='HH'> renscfact=0.5 facscfact=0.5 </weight>
+</initrwgt>
+
+
+#---------------------------------------------------
+#   Soft/Collinear limit TESTS
+#---------------------------------------------------
+#    Check soft/coll limits -> Just for debugging
+verytinypars      0         ! tiny values of 1d-10 for parameters controlling how close we get
+#		     	    ! to soft/coll limits -> values used throughout the program
+colltest          0
+softtest          0
+#tinyForLims      1d-10     ! Set these parameters to tiny values only for soft/coll limit checks
+
+
+#------------------------------------------------
+#   BORN/REMNANT SUPPRESSION
+#------------------------------------------------
+#bornsuppfact 30  ! (default 1), If 1 the Born suppression factor is included.
+#                ! Weighted events are generated. If 0 no suppression
+#                ! factor is included, and events are unweighted.
+withdamp      1  ! Split real amplitude into a singular and remnant contribution
+#bornzerodamp  1
+
+
+#------------------------------------------------
+#   OPTIMIZATION OPTIONS
+#------------------------------------------------
+smartsig      1   ! (default 1)
+fastbtlbound  1
+
+
+#------------------------------------------------
+#   OPTIONS TO CATCH INSTABILITIES
+#------------------------------------------------
+check_bad_st1 1  ! (default 0) if 1, takes care of removing bad grids during stage 1
+check_bad_st2 1  ! (default 0) if 1, takes care of removing bad grids during stage 2
+
+
+#------------------------------------------------
+#   PARALLEL RUNS
+#------------------------------------------------
+#   The following is for parallel runs (see manual in Z2jet/Docs/)
+# manyseeds           1
+# parallelstage       1
+# xgriditeration      1
+# maxseeds         1000

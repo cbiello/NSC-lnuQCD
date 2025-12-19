@@ -12,6 +12,7 @@
       real * 8  :: powheginput
       integer   :: iborn,j
       logical, save :: ini=.true., nores
+      real * 8  :: q2min
 
       if(ini) then
          if(powheginput("#nores") == 1) then
@@ -42,7 +43,14 @@ c generate Born phase space from resoance information
      1        flst_bornres(:,iborn),kn_beams,kn_jacborn,
      1        kn_xb1,kn_xb2,kn_sborn,kn_cmpborn,kn_pborn)
 
+
+c Needed to avoid the photon pole in the Vcharge=0 run
+         q2min=powheginput("qmin")**2         
+         if(kn_sborn .lt. q2min) kn_jacborn=0d0
+cccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         
          kn_minmass = 2*ph_bmass
+         
       endif
       end
 
@@ -96,7 +104,7 @@ c generate Born phase space from resoance information
          endif
          write(*,*) '*****************************************'
          if(fixedscale) then
-            write(*,*) ' mu0 = mz '
+            write(*,*) ' mu0 = 91.1876 '
          else
             write(*,*) ' mu0= dynamic scale'
          endif
@@ -109,10 +117,11 @@ c generate Born phase space from resoance information
          ini=.false.
       endif
       if(fixedscale) then ! fixedscale: mu0 = ph_zmass
-        mu0 = ph_zmass
+        mu0 = 91.1876d0
       else
-c set dynamical scale
-        mu0 = 999
+c     set dynamical scale
+         print*, 'dynamical scale still to be set'
+         stop
 
       endif
       muf = mu0
