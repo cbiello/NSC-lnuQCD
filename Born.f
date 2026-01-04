@@ -8,8 +8,21 @@ c Wrapper subroutine to call OL Born
       real * 8, intent(out) :: born
       real * 8, intent(out) :: bornjk(nlegs,nlegs)
       real * 8, intent(out) :: bmunu(0:3,0:3,nlegs)
+      real * 8 :: testp(0:3,nlegs)
 
+c      print*, 'bflav= ', bflav
+c      print*, 'p= ', p
+
+c      testp(0:3,1) = (/ 100.53143535388887d0,  0.d0,  0.d0,  100.53143535388887d0 /)
+c      testp(0:3,2) = (/ 100.53143535388887d0,  0.d0,  0.d0, -100.53143535388887d0 /)
+c      testp(0:3,3) = (/ 100.53143535388888d0, 14.575690157252627d0,  99.067540775519205d0, -8.9297880962398768d0 /)
+c      testp(0:3,4) = (/ 100.53143535388885d0,-14.575690157252627d0, -99.067540775519205d0,  8.9297880962398768d0 /)
+      
       call openloops_born(p,bflav,born,bornjk,bmunu)
+      
+c      print*, 'born= ', born
+c      stop
+      
       end subroutine setborn
 
       subroutine setbornonly(p,bflav,born)

@@ -1,4 +1,4 @@
-chooseDY -1
+chooseDY 1
 bornonly 1
 qmin 200
 
@@ -23,7 +23,7 @@ alphas_from_lhapdf  1            ! (default 0) if 1, uses alphas from PDF evolut
 #------------------------------------------------
 #    EW INPUTS
 #------------------------------------------------
-ewscheme	    1
+ewscheme 1
 zmass 91.1876d0
 wmass 80.3980d0
 hmass 125d0
