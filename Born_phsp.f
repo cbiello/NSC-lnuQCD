@@ -49,7 +49,7 @@ c Needed to avoid the photon pole in the Vcharge=0 run
          if(kn_sborn .lt. q2min) kn_jacborn=0d0
 cccccccccccccccccccccccccccccccccccccccccccccccccccccc
          
-         kn_minmass = 2*ph_bmass
+         kn_minmass = 0d0
          
       endif
       end

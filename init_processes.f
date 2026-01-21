@@ -105,7 +105,7 @@ cccccccccccccccccccccccccOpenLoops Initcccccccccccccccccccccccccccccccccc
 
 ! Coupling order: order_ew -> NLO QCD
       call set_parameter("order_ew", res_powew)
-
+      
 ! make sure complex mass scheme is switched on
       call set_parameter("use_cms",1)
 
@@ -169,6 +169,20 @@ c     set the number of final-state paricles at the Born-level WITHOUT any reson
            flst_born(   3,   flst_nborn)=         -11
            flst_born(   4,   flst_nborn)=          12
 
+           flst_nborn = flst_nborn + 1
+        
+           flst_born(   1,   flst_nborn)=           4
+           flst_born(   2,   flst_nborn)=          -3
+           flst_born(   3,   flst_nborn)=         -11
+           flst_born(   4,   flst_nborn)=          12
+
+           flst_nborn = flst_nborn + 1
+        
+           flst_born(   1,   flst_nborn)=          -3
+           flst_born(   2,   flst_nborn)=           4
+           flst_born(   3,   flst_nborn)=         -11
+           flst_born(   4,   flst_nborn)=          12           
+           
         elseif(powheginput("chooseDY").lt.-0.1) then
 
            print*, '************* DY PROCESS ***************'
@@ -188,6 +202,20 @@ c     set the number of final-state paricles at the Born-level WITHOUT any reson
            flst_born(   3,   flst_nborn)=          11
            flst_born(   4,   flst_nborn)=         -12
 
+           flst_nborn = flst_nborn + 1
+        
+           flst_born(   1,   flst_nborn)=          -4
+           flst_born(   2,   flst_nborn)=           3
+           flst_born(   3,   flst_nborn)=          11
+           flst_born(   4,   flst_nborn)=         -12
+
+           flst_nborn = flst_nborn + 1
+        
+           flst_born(   1,   flst_nborn)=           3
+           flst_born(   2,   flst_nborn)=          -4
+           flst_born(   3,   flst_nborn)=          11
+           flst_born(   4,   flst_nborn)=         -12
+           
         elseif(powheginput("chooseDY").gt.-0.1 .and.
      &         powheginput("chooseDY").lt.0.1) then
 
@@ -286,8 +314,55 @@ c     set the number of final-state paricles at the Born-level WITHOUT any reson
            flst_real(   3,   flst_nreal)=         -11
            flst_real(   4,   flst_nreal)=          12
            flst_real(   5,   flst_nreal)=           1
-           
-           
+
+           flst_nreal = flst_nreal + 1
+
+           flst_real(   1,   flst_nreal)=           4
+           flst_real(   2,   flst_nreal)=          -3
+           flst_real(   3,   flst_nreal)=         -11
+           flst_real(   4,   flst_nreal)=          12
+           flst_real(   5,   flst_nreal)=           0
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=          -3
+           flst_real(   2,   flst_nreal)=           4
+           flst_real(   3,   flst_nreal)=         -11
+           flst_real(   4,   flst_nreal)=          12
+           flst_real(   5,   flst_nreal)=           0
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           0
+           flst_real(   2,   flst_nreal)=          -3
+           flst_real(   3,   flst_nreal)=         -11
+           flst_real(   4,   flst_nreal)=          12
+           flst_real(   5,   flst_nreal)=          -4
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=          -3
+           flst_real(   2,   flst_nreal)=           0
+           flst_real(   3,   flst_nreal)=         -11
+           flst_real(   4,   flst_nreal)=          12
+           flst_real(   5,   flst_nreal)=          -4
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           0
+           flst_real(   2,   flst_nreal)=           4
+           flst_real(   3,   flst_nreal)=         -11
+           flst_real(   4,   flst_nreal)=          12
+           flst_real(   5,   flst_nreal)=           3
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           4
+           flst_real(   2,   flst_nreal)=           0
+           flst_real(   3,   flst_nreal)=         -11
+           flst_real(   4,   flst_nreal)=          12
+           flst_real(   5,   flst_nreal)=           3
+
         elseif(powheginput("chooseDY").lt.-0.1) then
            flst_nreal= 1 ! number of born flavour structures
 
@@ -336,6 +411,55 @@ c     set the number of final-state paricles at the Born-level WITHOUT any reson
            flst_real(   3,   flst_nreal)=          11
            flst_real(   4,   flst_nreal)=         -12
            flst_real(   5,   flst_nreal)=          -1
+
+           flst_nreal = flst_nreal + 1
+
+           flst_real(   1,   flst_nreal)=          -4
+           flst_real(   2,   flst_nreal)=           3
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -12
+           flst_real(   5,   flst_nreal)=           0
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           3
+           flst_real(   2,   flst_nreal)=          -4
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -12
+           flst_real(   5,   flst_nreal)=           0
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           0
+           flst_real(   2,   flst_nreal)=           3
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -12
+           flst_real(   5,   flst_nreal)=           4
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           3
+           flst_real(   2,   flst_nreal)=           0
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -12
+           flst_real(   5,   flst_nreal)=           4
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           0
+           flst_real(   2,   flst_nreal)=          -4
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -12
+           flst_real(   5,   flst_nreal)=          -3
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=          -4
+           flst_real(   2,   flst_nreal)=           0
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -12
+           flst_real(   5,   flst_nreal)=          -3
+
            
         elseif(powheginput("chooseDY").gt.-0.1 .and.
      &         powheginput("chooseDY").lt.0.1) then
@@ -410,7 +534,7 @@ c     set the number of final-state paricles at the Born-level WITHOUT any reson
            flst_real(   2,   flst_nreal)=           1
            flst_real(   3,   flst_nreal)=          11
            flst_real(   4,   flst_nreal)=         -11
-           flst_real(   5,   flst_nreal)=           2
+           flst_real(   5,   flst_nreal)=           1
 
            flst_nreal = flst_nreal + 1
         
@@ -418,7 +542,7 @@ c     set the number of final-state paricles at the Born-level WITHOUT any reson
            flst_real(   2,   flst_nreal)=           0
            flst_real(   3,   flst_nreal)=          11
            flst_real(   4,   flst_nreal)=         -11
-           flst_real(   5,   flst_nreal)=           2
+           flst_real(   5,   flst_nreal)=           1
 
            flst_nreal = flst_nreal + 1
         
@@ -435,7 +559,103 @@ c     set the number of final-state paricles at the Born-level WITHOUT any reson
            flst_real(   3,   flst_nreal)=          11
            flst_real(   4,   flst_nreal)=         -11
            flst_real(   5,   flst_nreal)=          -1
-           
+
+           flst_nreal = flst_nreal + 1
+
+           flst_real(   1,   flst_nreal)=          -4
+           flst_real(   2,   flst_nreal)=           4
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=           0
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           4
+           flst_real(   2,   flst_nreal)=          -4
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=           0
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           0
+           flst_real(   2,   flst_nreal)=           4
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=           4
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           4
+           flst_real(   2,   flst_nreal)=           0
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=           4
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           0
+           flst_real(   2,   flst_nreal)=          -4
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=          -4
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=          -4
+           flst_real(   2,   flst_nreal)=           0
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=          -4
+
+           flst_nreal= flst_nreal + 1 ! number of born flavour structures
+
+           flst_real(   1,   flst_nreal)=          -3
+           flst_real(   2,   flst_nreal)=           3
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=           0
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           3
+           flst_real(   2,   flst_nreal)=          -3
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=           0
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           0
+           flst_real(   2,   flst_nreal)=           3
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=           3
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           3
+           flst_real(   2,   flst_nreal)=           0
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=           3
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=           0
+           flst_real(   2,   flst_nreal)=          -3
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=          -3
+
+           flst_nreal = flst_nreal + 1
+        
+           flst_real(   1,   flst_nreal)=          -3
+           flst_real(   2,   flst_nreal)=           0
+           flst_real(   3,   flst_nreal)=          11
+           flst_real(   4,   flst_nreal)=         -11
+           flst_real(   5,   flst_nreal)=          -3
+
         endif
         
         return

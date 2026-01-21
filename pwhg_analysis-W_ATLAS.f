@@ -23,6 +23,7 @@ c
 c Define the histos:
 c
 c rate and transverse mass
+      call bookupeqbins('total',1d0,0d0,1d0)
       call bookupeqbins('rate',1d0,0d0,1d0)
       call bookupeqbins('massT',dmt,mtmin,mtmax)
 c 
@@ -64,6 +65,7 @@ c
       real *8 ptlep_cut, ptmiss_cut
       real *8 ptlep_geom
       real *8 ylep_cut
+      real *8 mT_min, mT_max
       
 c================================================
 
@@ -72,6 +74,8 @@ ccccccccccccccccc
       ptmiss_cut = 85d0
       ptlep_geom = 35d0
       ylep_cut   = 2.4d0
+      mT_min = 200.0d0
+      mT_max = 5000.0d0
 ccccccccccccccccc
       
       write_cuts=.false.     
@@ -138,6 +142,8 @@ ccccccccccccccccc
       endif
 
       
+      call filld('total',0.5d0,dsig)      
+      
 c Parton level analysis
       if(whcprg.eq.'NLO'.or.whcprg.eq.'LHE') then
 
@@ -170,7 +176,7 @@ c$$$         enddo
 
 
          if(nhep.gt.4) then
-            print*, 'implement the photon isolation'
+!            print*, 'implement the photon isolation'
          endif
          
 c Hadron level analysis
@@ -200,7 +206,6 @@ cccccccccccccccccccccccccccccccccc
 
 
 ccccc KINEMATIC RECONSTRUCTION
-
       call ptyeta(phep(1,il),ptl,yl,etal)
       call ptyeta(phep(1,inu),ptnu,ynu,etanu)
 
@@ -213,6 +218,7 @@ ccccc KINEMATIC RECONSTRUCTION
          ppairlnu(mu)=phep(mu,il)+phep(mu,inu)
       enddo
 
+      if(massT.le.mT_min .or. massT.ge.mT_max) return
       if(ptl .lt. ptlep_cut) return
       if(ptnu .lt. ptmiss_cut) return
       if(ptl*ptnu < ptlep_geom**2) return
