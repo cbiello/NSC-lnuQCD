@@ -165,14 +165,14 @@ c$$$         enddo
             endif
          enddo
 
-         if(nl.ne.1) then
-            write(*,*) "Error in pwhg_analysis: ",nl," charged leps"
-            call exit(1)
-         endif
-         if(nnu.ne.1) then
-            write(*,*) "Error in pwhg_analysis: ",nnu," charged leps"
-            call exit(1)
-         endif
+c$$$         if(nl.ne.1) then
+c$$$            write(*,*) "Error in pwhg_analysis: ",nl," charged leps"
+c$$$            call exit(1)
+c$$$         endif
+c$$$         if(nnu.ne.1) then
+c$$$            write(*,*) "Error in pwhg_analysis: ",nnu," charged leps"
+c$$$            call exit(1)
+c$$$         endif
 
 
          if(nhep.gt.4) then
@@ -204,6 +204,7 @@ ccccc CHECK OF INFINITE WEIGHTS
       endif 
 cccccccccccccccccccccccccccccccccc
 
+      return
 
 ccccc KINEMATIC RECONSTRUCTION
       call ptyeta(phep(1,il),ptl,yl,etal)

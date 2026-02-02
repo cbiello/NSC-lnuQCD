@@ -16,7 +16,7 @@ c Wrapper subroutine to call OL Virtual
       
       s= 2.0d0 * ( p(0,1)*p(0,2) - ( p(1,1)*p(1,2) + p(2,1)*p(2,2)
      &     + p(3,1)*p(3,2) ) )
-      
+
 c$$$c      print*, 's= ', s
 c$$$c      st_muren2 = s      
 c$$$c     Poles

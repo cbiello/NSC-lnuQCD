@@ -4,11 +4,29 @@ c Wrapper subroutine to call the OL real emission matrix
       include 'pwhg_math.h'
       include 'pwhg_st.h'
       include 'nlegborn.h'
+      include 'PhysPars.h'
+      include 'pwhg_kn.h'
       real * 8, intent(in)  :: p(0:3,nlegrealexternal)
       integer,  intent(in)  :: rflav(nlegrealexternal)
       real * 8, intent(out) :: amp2
+      real * 8 :: mw2, pw(0:3), q2min, powheginput
 
-      call openloops_real(p,rflav,amp2)
+c      pw(:)=p(:,3)+p(:,4)
+c      mw2 = pw(0)**2 - pw(1)**2 -pw(2)**2 -pw(3)**2
+c      q2min=powheginput("qmin")**2
+
+c      print*, 'st_alpha= ', st_alpha
+c      if(mw2.lt.q2min) then
+c         print*, 'rflav= ', rflav
+c         print*, 'mw2= ', sqrt(mw2)
+c         print*, 'p= ', p
+c         amp2=0d0
+c         kn_jacborn=0d0
+c      else
+         call openloops_real(p,rflav,amp2)
+c      endif
+c      stop
+      
       end
 
 

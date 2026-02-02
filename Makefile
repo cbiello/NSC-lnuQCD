@@ -227,7 +227,7 @@ ifdef OLLIBS
   process_src_dir=$(PWD)/OL_process_src \
   process_obj_dir=$(PWD)/$(OBJ)/OL_process_obj \
   process_lib_dir=$(PWD)/$(OBJ)/proclib ; \
-	./openloops libinstall $(OLLIBS) generator=0 compile_extra=1 fortran_compiler=$(COMPILER) \
+	./openloops libinstall $(OLLIBS) compile_extra=1 fortran_compiler=$(COMPILER) \
 	generic_lib_dir=$(PWD)/$(OBJ)/ compile_libraries=cuttools,collier link_libraries=cuttools,collier \
   process_src_dir=$(PWD)/OL_process_src \
   process_obj_dir=$(PWD)/$(OBJ)/OL_process_obj \

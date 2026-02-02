@@ -1,5 +1,5 @@
       subroutine setborn(p,bflav,born,bornjk,bmunu)
-c Wrapper subroutine to call OL Born
+c     Wrapper subroutine to call OL Born
       implicit none
       include 'nlegborn.h'
       integer, parameter :: nlegs=nlegbornexternal
@@ -17,10 +17,18 @@ c      testp(0:3,1) = (/ 100.53143535388887d0,  0.d0,  0.d0,  100.53143535388887
 c      testp(0:3,2) = (/ 100.53143535388887d0,  0.d0,  0.d0, -100.53143535388887d0 /)
 c      testp(0:3,3) = (/ 100.53143535388888d0, 14.575690157252627d0,  99.067540775519205d0, -8.9297880962398768d0 /)
 c      testp(0:3,4) = (/ 100.53143535388885d0,-14.575690157252627d0, -99.067540775519205d0,  8.9297880962398768d0 /)
-      
+
       call openloops_born(p,bflav,born,bornjk,bmunu)
-      
+
+      bornjk(1,1)=-4.0d0/3.0d0*born
+      bornjk(1,2)= 4.0d0/3.0d0*born
+      bornjk(2,1)= 4.0d0/3.0d0*born
+      bornjk(2,2)=-4.0d0/3.0d0*born
 c      print*, 'born= ', born
+c      print*, 'bornjk= ', bornjk
+c      print*, 'bmunu= ', bmunu
+      
+      if(born.lt.10**(-15)) print*, 'born= ', born, ', p= ', p
 c      stop
       
       end subroutine setborn

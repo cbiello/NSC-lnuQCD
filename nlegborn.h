@@ -8,7 +8,7 @@ c external (i.e. not including intermediate resonances) particles in the born pr
 
 c external particles including possible resonances
       integer nlegborn,nlegreal
-      parameter (nlegborn=4)
+      parameter (nlegborn=5)
       parameter (nlegreal=nlegborn+1)
 
       integer ndiminteg
